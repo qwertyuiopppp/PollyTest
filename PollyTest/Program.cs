@@ -25,14 +25,11 @@ namespace PollyTest
 					  Console.WriteLine("333333:" + exception.ToString() + "------" + $"第{retryCount}次重试");
 
 				  });
-			var result = policy.ExecuteAsync(() => T());
+			var result = policy.ExecuteAsync(async () => await Task.FromResult(true));
 			Console.WriteLine("444444:");
+
 		}
 
-		private static Task<bool> T()
-		{
-			return Task.FromResult(true);
-		}
 
 		private static void ExceptionReTry()
 		{
