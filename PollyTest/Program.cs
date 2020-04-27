@@ -109,6 +109,7 @@ namespace PollyTest
 			//});
 
 			var result = policy.ExecuteAsync((token) => TestException(), tokenSource.Token).ContinueWith(t => Console.WriteLine("完成"));
+			var result2 = policy.ExecuteAsync((token) => TestException(), tokenSource.Token).ContinueWith(t => Console.WriteLine("完成"));
 			//var result1 = policy.ExecuteAsync(() => TestException()).ContinueWith(t => Console.WriteLine("完成"));
 			Task.Run(()=> { Thread.Sleep(10000); tokenSource.Cancel(); });
 			
